@@ -1,0 +1,38 @@
+@font-face {
+    font-family: lores12;
+    src: url(../fonts/lores12.ttf);
+}
+
+@font-face {
+    font-family: lores12_bold;
+    src: url(../fonts/lores12_bold.ttf);
+}
+
+#navbar-name{
+    font-size: 35px;
+    padding-left: 50px;
+    margin-right: 0;
+    font-family: lores12_bold;
+}
+.navbar-nav {
+    font-family: lores12 ;
+    font-size: 25px !important;
+}
+.navbar-nav > .active > a 
+{
+    /* background-color: gray; */
+    border-radius: 5px;
+    /* font-family: lores12_bold ; */
+}
+
+.nav-item{
+    padding-left: 20px;
+}
+
+.dropdown-menu{
+    border-radius: 0 !important;
+}
+#speaker{
+    margin-left: 10px;
+    margin-right: 20px;
+}
