@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{%load static %}
+{% block content %}
+<!-- <!DOCTYPE html>
+<html> -->
+
+<!-- <head> -->
+  <script src="https://kit.fontawesome.com/1bba7cb278.js"></script>
+  <link rel="stylesheet" href={%static "css/cesspool.css"%}>
+<!-- 
+</head>
+
+<body> -->
+
+  <div class = "perilian">
+    <script type="text/processing">
+    int cols, rows;
+int scl = 20;
+int w = 1280;
+int h = 800;
+
+float flying = 0;
+
+float[][] terrain;
+
+void setup() {
+  size(1280, 720, P3D);
+  cols = w / scl;
+  rows = h/ scl;
+  terrain = new float[cols][rows];
+}
+
+
+void draw() {
+
+  flying -= 0.15;
+
+  float yoff = flying;
+  for (int y = 0; y < rows; y++) {
+    float xoff = 0;
+    for (int x = 0; x < cols; x++) {
+      terrain[x][y] = map(noise(xoff, yoff), 0, 1, -100, 100);
+      xoff += 0.8;
+    }
+    yoff += 0.5;
+  }
+
+
+
+  background(0);
+  stroke(255);
+  noFill();
+
+  translate(width/2, height/2+50);
+  rotateX(PI/3);
+  translate(-w/2, -h/2);
+  for (int y = 0; y < rows-1; y++) {
+    beginShape(TRIANGLE_STRIP);
+    for (int x = 0; x < cols; x++) {
+      vertex(x*scl, y*scl, terrain[x][y]);
+      vertex(x*scl, (y+1)*scl, terrain[x][y+1]);
+      //rect(x*scl, y*scl, scl, scl);
+    }
+    endShape();
+  }
+}
+    </script>
+    <canvas></canvas>
+
+
+  <div class ="container">
+
+    <div class = "title">
+      <div class = "pull-right">
+        <button class = "minimize"><object type="image/svg+xml" data={%static "images/ww.svg"%}
+          class="logo" style="width:10px;height:10px;position:static;"></object></i>
+        </button>
+        <button class = "maximize"><b><object type="image/svg+xml" data={%static "images/maxi.svg"%}
+          class="logo" style="width:10px;height:10px;position:static;"></object></i></b></button>
+        <button class = "close"><object type="image/svg+xml" data={%static "images/close.svg"%}
+          class="logo" style="width:10px;height:10px;position:static;"></object></i></button>
+      </div>
+
+      <div class = "my_computer_icon"></div>untitled.html</div>
+      <ul class = "toolbar" style="font-family:"MS Sans-serif";">
+        <li><u>A</u>bout me</li>
+        <li><u>P</u>rojects</li>
+        <li><u>B</u>log</li>
+        
+      </ul>
+
+      <div class = "container_body">
+        HELLO !
+        Im an e<br><br><br>nthusiast AI/ML developer with a Computer Science degree. I have worked on projects such as
+        <br>
+  -Predicting the future price of BTC and other crypto using LSTM Neural network.(Python, Keras)
+<br><br>
+  -Image Style transfer of artistic photos using CNN (Convolutional neural network).(Research Paper)
+<br><br>
+  -Completely new wallpaper genera<br><br>tor via Image generation using GAN (Generative adversarial Network) trained on the cloud. (Python, Google Colab, Tensorflow)
+<br><br><br><br>
+
+  -Developed an android app for college newspaper.
+<br><br><br>
+  -Created a QR code scanner based treasure hunt android game for college festival.
+<br><br><br>
+  -Ot<br><br><br>her web development projects (made sites for clients).
+<br>
+  I have also completed a few paid udemy courses relating to machine learning and deep learning.
+  <br>M<br><br><br>y main focus is to provide budget friendly and swift solutions to clients, without drowning them in jargon.
+  <br>The code delivered by me will be well documented and maintainable.
+  <br>Ready <br><br><br>to put in extra personal time to complete project before deadline.<br><br>
+
+  I like to work <br><br><br><br>on my personal projects in my free time, reading non fiction, music, meditation, tripping in nature and digital painting.
+</div>
+
+      <div class = "footer">
+        <div class = "footer_left">footer</div>
+        <div class = "footer_right"><br></div>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock content %}
+
+<!-- </body>
+</html> -->

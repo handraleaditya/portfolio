@@ -8,6 +8,11 @@
     src: url(../fonts/lores12_bold.ttf);
 }
 
+#navbar{
+    z-index: 3;
+}
+
+
 #navbar-name{
     font-size: 35px;
     padding-left: 50px;

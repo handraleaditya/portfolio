@@ -8,17 +8,75 @@
         <link rel="stylesheet" href={%static "css/base.css"%}>
         <!-- Script for cirsor blink and pixellated cursor  -->
         <link rel="stylesheet" href={%static "css/cursor.css"%}>
+        <script src ={%static "scripts/processing.js"%}></script>
+
 
 
         <!-- Bootstrap tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    </head>
+        <!-- <link
+        rel="stylesheet"
+        href="https://unpkg.com/98.css"
+      > -->
+        <script type="text/processing">
+          int cols, rows;
+      int scl = 20;
+      int w = 1280;
+      int h = 800;
+      
+      float flying = 0;
+      
+      float[][] terrain;
+      
+      void setup() {
+        size(1280, 720, P3D);
+        cols = w / scl;
+        rows = h/ scl;
+        terrain = new float[cols][rows];
+      }
+      
+      
+      void draw() {
+      
+        flying -= 0.15;
+      
+        float yoff = flying;
+        for (int y = 0; y < rows; y++) {
+          float xoff = 0;
+          for (int x = 0; x < cols; x++) {
+            terrain[x][y] = map(noise(xoff, yoff), 0, 1, -100, 100);
+            xoff += 0.8;
+          }
+          yoff += 0.5;
+        }
+      
+      
+      
+        background(0);
+        stroke(255);
+        noFill();
+      
+        translate(width/2, height/2+50);
+        rotateX(PI/3);
+        translate(-w/2, -h/2);
+        for (int y = 0; y < rows-1; y++) {
+          beginShape(TRIANGLE_STRIP);
+          for (int x = 0; x < cols; x++) {
+            vertex(x*scl, y*scl, terrain[x][y]);
+            vertex(x*scl, (y+1)*scl, terrain[x][y+1]);
+            //rect(x*scl, y*scl, scl, scl);
+          }
+          endShape();
+        }
+      }
+          </script>
+      </head>
 
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id='navbar'>
             <a class="navbar-brand" id="navbar-name" href="#"> > Aditya Handrale </a> <span class="blinking-cursor">▋</span>
             <!-- <img id="speaker" src={% static "images/speaker.png" %} width="30" height="30" alt="" data-toggle="tooltip" data-placement="top" title="Tooltip on top"> -->
 
@@ -67,12 +125,14 @@
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <a class="dropdown-item" href="#">Something else here</a>
+                        
                       </div>
                     </li>
                   </ul>
               </form>
           </nav>
 
+            
         {% block content %}
 
         {% endblock %}
